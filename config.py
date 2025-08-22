@@ -4,12 +4,12 @@ from datetime import datetime
 # Mock credentials (in real world, these would be from environment variables or secure storage)
 CREDENTIALS = {
     "gmail": {
-        "email": "your-email@gmail.com",
-        "password": "your-password"
+        "email": "betabrian977@gmail.com",
+        "password": "Chan@2024"
     },
     "outlook": {
-        "email": "your-email@outlook.com",
-        "password": "your-password"
+        "email": "alpha_brian27@outlook.com",
+        "password": "Chan@2024"
     }
 }
 
@@ -21,3 +21,8 @@ URLS = {
 
 # Default settings
 DEFAULT_TIMEOUT = 30000  # 30 seconds
+
+
+# Test with headless mode first (no browser UI)
+
+# Test with visible browser

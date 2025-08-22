@@ -3,6 +3,8 @@ import json
 from typing import Dict, Any
 from playwright.sync_api import Page, sync_playwright
 import logging
+from datetime import datetime
+
 
 class InstructionParser:
     """Mock LLM that parses natural language into structured commands."""
