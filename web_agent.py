@@ -94,3 +94,40 @@ class GenericWebAgent:
     
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.close()
+
+    # web_agent.py (continued)
+class GenericWebAgent:
+    """Base class for all web automation agents."""
+    
+    def __init__(self, provider: str, headless: bool = False):
+        self.provider = provider
+        self.headless = headless
+        self.playwright = sync_playwright().start()
+        self.browser = self.playwright.chromium.launch(headless=headless)
+        self.context = self.browser.new_context()
+        self.page = self.context.new_page()
+        self.logger = logging.getLogger(f"{provider}_agent")
+        
+    def execute_instruction(self, parsed_instruction: Dict[str, Any]) -> Dict[str, Any]:
+        """Execute a parsed instruction. Must be implemented by subclasses."""
+        raise NotImplementedError("Subclasses must implement execute_instruction")
+    
+    def login(self):
+        """Login to the service. Must be implemented by subclasses."""
+        raise NotImplementedError("Subclasses must implement login")
+    
+    def _take_screenshot(self, name: str):
+        """Helper method to take screenshots for debugging."""
+        self.page.screenshot(path=f"screenshot_{name}_{datetime.now().timestamp()}.png")
+    
+    def close(self):
+        """Clean up resources."""
+        self.context.close()
+        self.browser.close()
+        self.playwright.stop()
+    
+    def __enter__(self):
+        return self
+    
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.close()
