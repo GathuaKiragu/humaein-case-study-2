@@ -4,11 +4,11 @@ from datetime import datetime
 # Mock credentials (in real world, these would be from environment variables or secure storage)
 CREDENTIALS = {
     "gmail": {
-        "email": "betabrian977@gmail.com",
+        "email": "testemail@gmail.com",
         "password": "Chan@2024"
     },
     "outlook": {
-        "email": "alpha_brian27@outlook.com",
+        "email": "testemail@gmail.com",
         "password": "Chan@2024"
     }
 }
